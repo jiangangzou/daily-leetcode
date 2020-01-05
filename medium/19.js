@@ -24,3 +24,29 @@ var removeNthFromEnd = function(head, n) {
 
     return dummyHead.next
 }
+
+// 取出链表中倒数第n个节点
+
+var removeNthFromEnd = function(head, n) {
+    let i = 1
+    const noop = {
+        next: null
+    }
+    dummyHead.next = head
+
+    let currentP1 = dummyHead
+    let currentP2 = dummyHead
+
+    while(currentP1) {
+        if(i == n) {
+            currentP2 = currentP2.next
+        }
+        if(i !== n) {
+            i++
+        }
+        currentP1 = currentP1.next
+    }
+    currentP2.next = ((currentP2 || noop).next || noop).next
+
+    return dummyHead.next
+}
