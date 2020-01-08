@@ -57,3 +57,60 @@ function insertionSort(array) {
         return 'array is not an Array'
     }
 }
+
+// 归并排序
+
+function mergeSort(arr) {  //采用自上而下的递归方法
+    var len = arr.length
+    if (len < 2) {
+        return arr
+    }
+    var middle = Math.floor(len / 2),
+        left = arr.slice(0, middle),
+        right = arr.slice(middle)
+    return merge(mergeSort(left), mergeSort(right))
+}
+
+function merge(left, right) {
+    var result = []
+    console.time('归并排序耗时')
+    while(left.length && right.length) {
+        if(left[0] <= right[0]) {
+            result.push(left.shift())
+        } else {
+            result.push(right.shift())
+        }
+    }
+
+    while(left.length) {
+        result.push(left.shift())
+    }
+    while(right.length) {
+        result.push(right.shift())
+    }
+    console.timeEnd('归并排序耗时')
+    return result
+
+}
+
+// 快速排序
+
+var quickSort = function(arr) {
+    console.time('快速排序耗时：')
+    if (arr.length <= 1) return arr
+    var pivotIndex = Math.floor(arr.length / 2)
+    var pivot = arr.slice(pivotIndex, 1)[0]
+    var left = []
+    var right = []
+    for(var i =0; i< arr.length;i++) {
+        if(arr[i] < pivot) {
+            left.push(arr[i])
+        } else {
+            right.push(arr[i])
+        }
+    }
+    console.timeEnd('快速排序耗时')
+    return quickSort(left).concat([pivot],quickSort2(right))
+}
+
+// 桶排序
