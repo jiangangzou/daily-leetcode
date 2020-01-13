@@ -57,7 +57,7 @@ class DoubleLinkedList:
         node = self.tail
         if node.prev:
             self.tail = node.prev
-            self.tail.next = Node
+            self.tail.next = node
         else:
             self.tail = self.head = None
         self.size -= 1
@@ -112,6 +112,15 @@ class DoubleLinkedList:
                 line += '=>'
         print(line)
 
+if __name__ = '__main__'：
+    I = DoubleLinkedList(10)
+    nodes = []
+    for i in range(10):
+        node = Node(i,1)
+        nodes.append(node)
+
+    I.append(nodes[0])
+    
 
 
     
